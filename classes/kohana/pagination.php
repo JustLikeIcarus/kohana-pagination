@@ -8,6 +8,11 @@ class Kohana_Pagination {
 	public $show_max_pages   = 10;
 	public $per_page_choices = array(10, 50, 100);
 
+
+	public static function factory(ORM $result, $page=1, $route, array $route_params=array(), $per_page=10){
+		return new Pagination($result, $page, $route, $route_params, $per_page);
+	}
+
 	public function __construct(ORM $result, $page=1, $route, array $route_params=array(), $per_page=10) {
 		$this->result       = clone($result);
 		$this->route        = $route;
